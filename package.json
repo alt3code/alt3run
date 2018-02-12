@@ -1,0 +1,16 @@
+***REMOVED***
+  "name": "alt3run",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bank.js",
+  "scripts": ***REMOVED***
+    "test": "echo \"Error: no test specified\" && exit 1"
+  ***REMOVED***,
+  "author": "",
+  "license": "ISC",
+  "dependencies": ***REMOVED***
+    "express": "^4.16.2",
+    "monzo-api": "^1.0.9",
+    "monzo-js": "0.0.6"
+  ***REMOVED***
+***REMOVED***
