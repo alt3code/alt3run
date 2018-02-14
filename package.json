@@ -11,6 +11,9 @@
   "dependencies": ***REMOVED***
     "express": "^4.16.2",
     "monzo-api": "^1.0.9",
-    "monzo-js": "0.0.6"
+    "monzo-js": "0.0.6",
+    "strava": "0.0.2",
+    "strava-client": "^0.1.1",
+    "strava-v3": "^1.14.0"
   ***REMOVED***
 ***REMOVED***
