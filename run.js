@@ -1,31 +1,29 @@
-var StravaApiV3 = require('strava_api_v3');
-var defaultClient = StravaApiV3.ApiClient.instance;
-var fs = require('fs');
+var auth = require('./auth.json');
+var https = require('https');
 
 // get creds from external file
-var userCreds = fs.readFileSync('creds.txt').toString().split("\n");
-var clientId = userCreds[0];
-var clientSecret = userCreds[1];
-var accessToken = accessToken[2];
-var returnURI = accessToken[3];
+var access_token = auth.access_token;
+var clientId = auth.client_id;
 
-// Configure OAuth2 access token for authorization: strava_oauth
-var strava_oauth = defaultClient.authentications['strava_oauth'];
-strava_oauth.accessToken = "YOUR ACCESS TOKEN"
+var strava = require('strava-v3');
+strava.athlete.get(***REMOVED***access_token***REMOVED***,function(err,payload,limits) ***REMOVED***
+    if(!err) ***REMOVED***
+        console.log(payload);
+    ***REMOVED***
+    else ***REMOVED***
+        console.log(err);
+    ***REMOVED***
+***REMOVED***);
 
-var api = new StravaApiV3.ActivitiesApi()
-
-var id = 789; // ***REMOVED***Long***REMOVED*** The identifier of the activity.
-
-var opts = ***REMOVED***
-  'includeAllEfforts': true // ***REMOVED***Boolean***REMOVED*** Whether all segments efforts should be included in the response
-***REMOVED***;
-
-var callback = function(error, data, response) ***REMOVED***
-  if (error) ***REMOVED***
-    console.error(error);
-  ***REMOVED*** else ***REMOVED***
-    console.log('API called successfully. Returned data: ' + data);
-  ***REMOVED***
-***REMOVED***;
-api.getActivityById(id, opts, callback);
+// Retrieves all the activities for an authenticated athletes
+function getActivities() ***REMOVED***
+  https.get("https://www.strava.com/api/v3/athlete/activities?access_token="+access_token, (res) => ***REMOVED***
+    res.setEncoding('utf8');
+    res.on('data', function (body) ***REMOVED***
+        // Retrieves activity data
+        var jsonData = JSON.parse(body);
+        console.log("data = " + jsonData[0].id);
+    ***REMOVED***);
+  ***REMOVED***);
+***REMOVED***
+getActivities();

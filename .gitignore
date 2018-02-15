@@ -62,3 +62,6 @@ typings/
 
 #credentials file
 credentials.txt
+
+#authentication file
+auth.json

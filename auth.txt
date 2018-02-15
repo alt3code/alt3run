@@ -1,4 +1,0 @@
-put client ID here
-put client Secret here
-put access Token here
-put redirect URI here
