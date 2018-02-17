@@ -2,24 +2,18 @@
 
   <head>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-       var socket = io.connect('http://127.0.0.1:4200');
-       socket.on('connect', function(data) ***REMOVED***
-          socket.emit('join', 'Hello World from client');
-       ***REMOVED***);
-       socket.on('messages', function(data) ***REMOVED***
-         // Get first activity (testing)
-         var json = JSON.parse(data)[0];
-          document.getElementById("athelete-info").innerHTML = JSON.stringify(data);
-          document.getElementById("activity-type").innerHTML = json.type;
-       ***REMOVED***);
-    </script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
 
   <body>
-    <h1 class="connect-text">Strava API Athlete Information:</h1>
-    <p id="athelete-info"></p>
-    <h2>Type: <span id="activity-type"></span></h2>
+    <div class="content-div">
+      <h1 class="connect-text">Strava API Athlete Information:</h1>
+      <p id="athelete-info"></p>
+      <p>Number of activities found: <strong><span id="activity-count"></span></strong></p>
+      <p>First activity type: <strong><span id="activity-type"></span></strong></p>
+      <p>Total distance of first activity: <strong><span id="total-distance-text"></span></strong></p>
+    </div>
+    <script type="text/javascript" src="client.js"></script>
   </body>
 
 </html>

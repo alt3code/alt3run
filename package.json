@@ -1,14 +1,27 @@
+<<<<<<< HEAD
+{
+=======
 ***REMOVED***
+>>>>>>> 179c6ee3f9d9b2a38984eaa48b988fff238b670f
   "name": "alt3run",
   "version": "1.0.0",
   "description": "",
   "main": "run.js",
+<<<<<<< HEAD
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+=======
   "scripts": ***REMOVED***
     "test": "echo \"Error: no test specified\" && exit 1"
   ***REMOVED***,
   "author": "",
   "license": "ISC",
   "dependencies": ***REMOVED***
+>>>>>>> 179c6ee3f9d9b2a38984eaa48b988fff238b670f
     "express": "^4.16.2",
     "jquery": "^3.3.1",
     "monzo-api": "^1.0.9",
@@ -18,5 +31,10 @@
     "strava": "0.0.2",
     "strava-client": "^0.1.1",
     "strava-v3": "^1.14.0"
+<<<<<<< HEAD
+  }
+}
+=======
   ***REMOVED***
 ***REMOVED***
+>>>>>>> 179c6ee3f9d9b2a38984eaa48b988fff238b670f
