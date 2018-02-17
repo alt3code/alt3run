@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 
   <head>
-    <script src="run.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+       var socket = io.connect('http://127.0.0.1:4200');
+       socket.on('connect', function(data) ***REMOVED***
+          socket.emit('join', 'Hello World from client');
+       ***REMOVED***);
+       socket.on('messages', function(data) ***REMOVED***
+          document.getElementById("athelete-info").innerHTML = JSON.stringify(data);
+       ***REMOVED***);
+    </script>
   </head>
 
   <body>
-    <h1>Hi</h1>
+    <h1 class="connect-text">Strava API Athlete Information:</h1>
+    <p id="athelete-info"></p>
   </body>
 
 </html>

@@ -22,7 +22,7 @@ function getActivityDetails(url, response) ***REMOVED***
         // Retrieves activity data
         var jsonData = JSON.parse(body);
         var jsonString = JSON.stringify(body);
-        console.log("Details = " + jsonString);
+        // console.log("Details = " + jsonString);
         return jsonString;
     ***REMOVED***);
   ***REMOVED***);
@@ -53,7 +53,7 @@ getActivities(activitiesUrl, function(response) ***REMOVED***
 
     getActivityDetails(activityUrl, function(response) ***REMOVED***
       var activityDetails = response;
-      console.log("Details = " + activityDetails);
+      // console.log("Details = " + activityDetails);
     ***REMOVED***);
 ***REMOVED***);
 
@@ -61,6 +61,27 @@ var express = require('express');
 var app = express();
 var request = require('request');
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+app.use(express.static(__dirname + '/node_modules'));
+app.get('/', function(req, res,next) ***REMOVED***
+    res.sendFile(__dirname + '/index.html');
+***REMOVED***);
+
+io.on('connection', function(client) ***REMOVED***
+    console.log('Client connected...');
+    client.on('join', function(data) ***REMOVED***
+        request("https://www.strava.com/api/v3/athlete/activities?access_token="+access_token, function (error, response, body) ***REMOVED***
+            if (!error && response.statusCode == 200) ***REMOVED***
+              client.emit('messages', body);
+            ***REMOVED***
+        ***REMOVED***);
+    ***REMOVED***);
+***REMOVED***);
+server.listen(4200);
+
+// Display JSON in browser (127.0.0.1:4200/data)
 app.set('json spaces', 2);
 app.get('/data', function(req, res)***REMOVED***
 
@@ -69,7 +90,5 @@ app.get('/data', function(req, res)***REMOVED***
       var activitiesJSON = JSON.parse(body);
       res.json(activitiesJSON);
     ***REMOVED***
-  ***REMOVED***)
+  ***REMOVED***);
 ***REMOVED***);
-
-app.listen(3000);
