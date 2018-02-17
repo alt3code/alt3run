@@ -8,7 +8,10 @@
           socket.emit('join', 'Hello World from client');
        ***REMOVED***);
        socket.on('messages', function(data) ***REMOVED***
+         // Get first activity (testing)
+         var json = JSON.parse(data)[0];
           document.getElementById("athelete-info").innerHTML = JSON.stringify(data);
+          document.getElementById("activity-type").innerHTML = json.type;
        ***REMOVED***);
     </script>
   </head>
@@ -16,6 +19,7 @@
   <body>
     <h1 class="connect-text">Strava API Athlete Information:</h1>
     <p id="athelete-info"></p>
+    <h2>Type: <span id="activity-type"></span></h2>
   </body>
 
 </html>
