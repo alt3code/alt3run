@@ -1,0 +1,12 @@
+.main {
+  font-size: 22px;
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  min-height: 600px;
+  margin: 25px auto;
+}
+.main a {
+  color: #222;
+  padding: 10px;
+}

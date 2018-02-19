@@ -1,0 +1,10 @@
+.Activity .title {
+  margin-top: -25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid black;
+}
+.Activity .id {
+}
+.Activity .totalDistance {
+  margin-bottom: 200px;
+}

@@ -1,0 +1,11 @@
+.mainNav {
+  margin-bottom: 25px;
+}
+ul {
+  list-style-type: none;
+  margin: 20px;
+  padding: 0;
+}
+ul li {
+  display: inline-block;
+}

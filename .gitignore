@@ -60,8 +60,8 @@ typings/
 # next.js build output
 .next
 
-#credentials file
-credentials.txt
+#config file
+/src/config/config.js
 
-#authentication file
-auth.json
+#DS_STORE
+/.DS_Store

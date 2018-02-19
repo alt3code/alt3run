@@ -1,0 +1,10 @@
+body {
+  background: white;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 2;
+}
+h, p {
+  margin: 0;
+  padding: 0;
+}
