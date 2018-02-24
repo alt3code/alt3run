@@ -60,5 +60,8 @@ typings/
 # next.js build output
 .next
 
-#DS_STORE
-/.DS_Store
+# DS_STORE
+/src/.DS_Store
+
+# config file
+src/config/config.js

@@ -33,11 +33,14 @@ export default class ActivitiesContainer extends Component {
 
   render() {
     var activities = this.state.activities.map((r, i) => {
+      console.log("r = " + r)
       return (
         <Activity
           key={i}
           id={r.id}
+          name={r.name}
           distance={r.distance}
+          polyline={r.map.summary_polyline}
         />
       );
     });

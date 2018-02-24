@@ -2,10 +2,14 @@
   "name": "alt3run",
   "version": "0.0.1",
   "dependencies": {
+    "@mapbox/polyline": "^0.2.0",
     "axios": "^0.16.1",
+    "bound-points": "^1.0.0",
+    "mapbox-gl": "^0.44.1",
     "material-ui": "^0.20.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-mapbox-gl": "^3.8.0",
     "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
