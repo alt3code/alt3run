@@ -18,7 +18,7 @@ export default class Nav extends Component {
     return (
       <nav className="mainNav">
         <ul>
-
+          
           <Drawer open={this.state.open}>
             <MenuItem>Feature</MenuItem>
             <MenuItem>Another feature</MenuItem>
