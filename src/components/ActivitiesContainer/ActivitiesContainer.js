@@ -32,40 +32,32 @@ export default class ActivitiesContainer extends Component {
   // }
 
   getActivities(url) {
+    var authActivities = [];
     api.fetchStrava(url).then(response => {
-      var authActivities = [];
       // Get all the activites - get the ID's, request polyline
       for (var i = 0; i < response.length; i++) {
           var activityId = response[i].id;
           var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
-          api.fetchStrava(activityUrl).then(response => authActivities.push(response));
-          console.log(authActivities[i]);
+          api.fetchStrava(activityUrl)
+            .then(response => {
+              console.log(response);
+              authActivities.push(response);
+              this.setState({activities: authActivities});
+          });
       }
-      this.setActivities(authActivities)
     });
-  }
-
-  setActivities(allActivities) {
-    // var authActivities = [];
-    // // Get all the activites - get the ID's, request polyline
-    // for (var i = 0; i < allActivities.length; i++) {
-    //     var activityId = allActivities[i].id;
-    //     var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
-    //     api.fetchStrava(activityUrl).then(response => authActivities.push(response));
-    //     console.log(authActivities[i]);
-    // }
     this.setState({
-      loading: false,
-      activities: allActivities
+      loading: false
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
   }
 
   render() {
     var activities = this.state.activities.map((r, i) => {
+      console.log("r = " + r)
       return (
         <Activity
           key={i}
