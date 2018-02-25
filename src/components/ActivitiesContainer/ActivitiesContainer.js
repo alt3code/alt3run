@@ -28,13 +28,13 @@ export default class ActivitiesContainer extends Component {
           });
       }
     });
+  }
+
+  componentWillMount() {
+    this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
     this.setState({
       loading: false
     });
-  }
-
-  componentDidMount() {
-    this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
   }
 
   render() {

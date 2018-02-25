@@ -6,7 +6,7 @@
 }
 .Activity .title {
   margin-top: -25px;
-  margin-bottom: 0px;
+  margin-bottom: -25px;
   font-size: 30pt;
 }
 .Activity .id {
