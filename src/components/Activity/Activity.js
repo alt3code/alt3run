@@ -3,13 +3,13 @@ import './Activity.css';
 import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import Card from 'material-ui/Card';
 import { MAPBOX_ACCESS_TOKEN } from '../../config/config';
+import runLogo from '../../Static/Run.png';
 
 const Map = ReactMapboxGl({
   accessToken: MAPBOX_ACCESS_TOKEN
 });
 
 var polyline = require('@mapbox/polyline');
-
 var getBounds = require('bound-points')
 
 export default class Activity extends Component {
@@ -46,6 +46,9 @@ export default class Activity extends Component {
       <Card style={{ margin: 50, padding: 55 }}>
         <div className="Activity">
           <h3 className="title">{this.props.name}</h3>
+          <p className="activityType">Type:
+            <span><img src={runLogo} style={{width: 40, position: 'relative', top: 10, left: 10}} alt='Run'/></span>
+          </p>
           <p className="totalDistance">Total Distance: {this.props.distance}m  ({(this.props.distance/1000).toFixed(2)}km)</p>
           <div className="mapContainer">
             <Map
@@ -53,7 +56,7 @@ export default class Activity extends Component {
               zoom={[12]}
               fitBounds={this.state.bounds}
               containerStyle={{
-                height: "450"
+                height: 450
               }}>
               <Layer
                 type="line"
@@ -65,6 +68,12 @@ export default class Activity extends Component {
                 <Feature coordinates={this.state.coords}/>
               </Layer>
             </Map>
+          </div>
+          <div className="infoContainer">
+            <p className="infoText">Information</p>
+            <p className="maxSpeed">Maximum Speed: {this.props.maxSpeed}m/s</p>
+            <p className="avgSpeed">Average Speed: {this.props.avgSpeed}m/s</p>
+            <p className="descText">Description: {this.props.description ? this.props.description : '-'}</p>
           </div>
         </div>
       </Card>

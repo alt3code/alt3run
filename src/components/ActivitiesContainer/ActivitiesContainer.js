@@ -13,24 +13,6 @@ export default class ActivitiesContainer extends Component {
     };
   }
 
-  // getActivities(url) {
-  //   api.fetchStrava(url).then(response => this.setActivities(response));
-  // }
-  //
-  // setActivities(result) {
-  //   // result.map((res) =>
-  //   //     this.state.activities.push(res)
-  //   // );
-  //   this.setState({
-  //     loading: false,
-  //     activities: result
-  //   });
-  // }
-  //
-  // componentWillMount() {
-  //   this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
-  // }
-
   getActivities(url) {
     var authActivities = [];
     api.fetchStrava(url).then(response => {
@@ -40,8 +22,8 @@ export default class ActivitiesContainer extends Component {
           var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
           api.fetchStrava(activityUrl)
             .then(response => {
-              console.log(response);
               authActivities.push(response);
+              console.log("response = " + response.id);
               this.setState({activities: authActivities});
           });
       }
@@ -57,13 +39,16 @@ export default class ActivitiesContainer extends Component {
 
   render() {
     var activities = this.state.activities.map((r, i) => {
-      console.log("r = " + r)
       return (
         <Activity
           key={i}
           id={r.id}
           name={r.name}
           distance={r.distance}
+          maxSpeed={r.max_speed}
+          avgSpeed={r.average_speed}
+          description={r.description}
+          type={r.type}
           polyline={r.map.polyline}
         />
       );
