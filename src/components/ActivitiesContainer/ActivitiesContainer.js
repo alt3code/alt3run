@@ -32,25 +32,35 @@ export default class ActivitiesContainer extends Component {
   // }
 
   getActivities(url) {
-    api.fetchStrava(url).then(response => this.setActivities(response));
-  }
-
-  setActivities(allActivities) {
-    var authActivities = [];
-    // Get all the activites - get the ID's, request polyline
-    for (var i = 0; i < allActivities.length; i++) {
-        var activityId = allActivities[i].id;
-        var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
-        api.fetchStrava(activityUrl).then(response => authActivities.push(response));
-        console.log(authActivities[i]);
-    }
-    this.setState({
-      loading: false,
-      activities: authActivities
+    api.fetchStrava(url).then(response => {
+      var authActivities = [];
+      // Get all the activites - get the ID's, request polyline
+      for (var i = 0; i < response.length; i++) {
+          var activityId = response[i].id;
+          var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
+          api.fetchStrava(activityUrl).then(response => authActivities.push(response));
+          console.log(authActivities[i]);
+      }
+      this.setActivities(authActivities)
     });
   }
 
-  componentDidMount() {
+  setActivities(allActivities) {
+    // var authActivities = [];
+    // // Get all the activites - get the ID's, request polyline
+    // for (var i = 0; i < allActivities.length; i++) {
+    //     var activityId = allActivities[i].id;
+    //     var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
+    //     api.fetchStrava(activityUrl).then(response => authActivities.push(response));
+    //     console.log(authActivities[i]);
+    // }
+    this.setState({
+      loading: false,
+      activities: allActivities
+    });
+  }
+
+  componentWillMount() {
     this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
   }
 
