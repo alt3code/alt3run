@@ -4,7 +4,7 @@ import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
 import Card from 'material-ui/Card';
 import { MAPBOX_ACCESS_TOKEN } from '../../config/config';
 import runLogo from '../../Static/Run.gif';
-import rideLogo from '../../Static/Ride.png';
+// import rideLogo from '../../Static/Ride.png';
 
 const Map = ReactMapboxGl({
   accessToken: MAPBOX_ACCESS_TOKEN
@@ -75,6 +75,9 @@ export default class Activity extends Component {
             <p className="maxSpeed">Maximum Speed: <strong>{this.props.maxSpeed}m/s</strong></p>
             <p className="avgSpeed">Average Speed: <strong>{this.props.avgSpeed}m/s</strong></p>
             <p className="descText">Description: <strong>{this.props.description ? this.props.description : '-'}</strong></p>
+          </div>
+          <div className="bottomDiv">
+            <p className="dateText">{this.props.date}</p>
           </div>
         </div>
       </Card>

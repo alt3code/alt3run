@@ -17,24 +17,21 @@ export default class ActivitiesContainer extends Component {
     var authActivities = [];
     api.fetchStrava(url).then(response => {
       // Get all the activites - get the ID's, request polyline
-      for (var i = 0; i < response.length; i++) {
-          var activityId = response[i].id;
-          var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
-          api.fetchStrava(activityUrl)
-            .then(response => {
-              authActivities.push(response);
-              console.log("response = " + response.id);
-              this.setState({activities: authActivities});
-          });
-      }
+      response.map(activity => {
+        var activityId = activity.id;
+        var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
+        api.fetchStrava(activityUrl)
+          .then(response => {
+            authActivities.push(response);
+            console.log("activities = " + authActivities + " loading = " + this.state.loading);
+            this.setState({activities: authActivities, loading: false});
+        });
+      });
     });
   }
 
   componentWillMount() {
     this.getActivities(`${ACTIVITIES_URL}?${TOKEN_STR}${ACCESS_TOKEN}`);
-    this.setState({
-      loading: false
-    });
   }
 
   render() {
@@ -49,6 +46,7 @@ export default class ActivitiesContainer extends Component {
           avgSpeed={r.average_speed}
           description={r.description}
           type={r.type}
+          date={r.start_date}
           polyline={r.map.polyline}
         />
       );
