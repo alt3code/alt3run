@@ -3,6 +3,7 @@ import { ACTIVITIES_URL, TOKEN_STR, ACCESS_TOKEN } from '../../config/config';
 import React, { Component } from 'react';
 import Activity from '../Activity/Activity';
 const api = require('../../utils/Api');
+const axios = require('axios');
 
 export default class ActivitiesContainer extends Component {
   constructor(props) {
@@ -14,20 +15,25 @@ export default class ActivitiesContainer extends Component {
   }
 
   getActivities(url) {
-    var authActivities = [];
-    api.fetchStrava(url).then(response => {
-      // Get all the activites - get the ID's, request polyline
-      response.map(activity => {
-        var activityId = activity.id;
-        var activityUrl = `${ACTIVITIES_URL}/${activityId}?${TOKEN_STR}${ACCESS_TOKEN}`;
-        api.fetchStrava(activityUrl)
-          .then(response => {
-            authActivities.push(response);
-            console.log("activities = " + authActivities + " loading = " + this.state.loading);
-            this.setState({activities: authActivities, loading: false});
+    var actPromises = [];
+    var self = this;
+    api.fetchStrava(url)
+      .then((response) => {
+        response.forEach(el => {
+          actPromises.push(axios.get(`${ACTIVITIES_URL}/${el.id}?${TOKEN_STR}${ACCESS_TOKEN}`));
+        });
+      })
+      .then((response) => {
+        axios.all(actPromises).then(function(results) {
+            var activities = [];
+            results.forEach(function(response) {
+                console.log(response.data);
+                activities.push(response.data);
+            })
+            console.log(activities);
+            self.setState({activities: activities, loading: false});
         });
       });
-    });
   }
 
   componentWillMount() {
