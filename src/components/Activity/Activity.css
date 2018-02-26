@@ -28,3 +28,7 @@
 .infoText {
   font-size: 200%;
 }
+.dateText {
+  position: absolute;
+  right: 100px;
+}
