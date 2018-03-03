@@ -48,7 +48,7 @@ export default class Activity extends Component {
       <Card style={{ margin: 50, padding: 55 }}>
         <div className="Activity">
           <div className="topSection">
-            <h3 className="title">{this.props.name}</h3>
+            <h3 id="titleActivity">{this.props.name}</h3>
             <p className="dateText">{this.props.date.split('T')[0]}   [{this.props.date.split('T')[1].split('Z')[0]}]</p>
           </div>
           <p className="activityType">Type:

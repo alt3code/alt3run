@@ -1,9 +1,21 @@
 import { ACTIVITIES_URL, TOKEN_STR, ACCESS_TOKEN } from '../../config/config';
+import runLogo from '../../Static/Run.gif';
 
 import React, { Component } from 'react';
+import Loader from '../Loader/Loader';
+import './ActivitiesContainer.css';
 import Activity from '../Activity/Activity';
 const api = require('../../utils/Api');
 const axios = require('axios');
+
+const LoadingDiv = () => {
+  return (
+    <div>
+      <p>Loading</p>
+      <span><img src={runLogo} style={{width: 40, position: 'relative', top: 5, left: 10}} alt='Run'/></span>
+    </div>
+  )
+}
 
 export default class ActivitiesContainer extends Component {
   constructor(props) {
@@ -61,6 +73,6 @@ export default class ActivitiesContainer extends Component {
       );
     });
 
-    return this.state.loading ? <p>Loading...</p> : <div>{activities}</div>
+    return this.state.loading ? <LoadingDiv /> : <div className="activitiesWrapper">{activities}</div>
   }
 }

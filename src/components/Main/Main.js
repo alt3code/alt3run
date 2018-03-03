@@ -9,11 +9,16 @@ export default class Main extends Component {
   render() {
     return (
       <div className="main">
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={AthleteContainer} />
-          <Route exact path="/activities" component={ActivitiesContainer} />
-        </Switch>
+        <div>
+          <Nav />
+        </div>
+        <div className="contentContainer">
+          <Switch>
+            <Route exact path="/" component={AthleteContainer} />
+            <Route exact path="/activities" component={ActivitiesContainer} />
+          </Switch>
+        </div>
+        
       </div>
     )
   }

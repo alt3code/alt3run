@@ -1,9 +1,14 @@
 .mainNav {
   margin-bottom: 25px;
+  margin-left: 0;
+  position: fixed;
+  background-color: #222;
+  width: 10%;
+  height: 100%;
+  z-index: 1000;
 }
 ul {
   list-style-type: none;
-  margin: 20px;
   padding: 0;
 }
 ul li {

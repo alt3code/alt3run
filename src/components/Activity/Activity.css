@@ -2,12 +2,12 @@
 
 .Activity {
   height: 650px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
 }
-.Activity .title {
-  margin-top: -25px;
-  margin-bottom: -25px;
-  font-size: 30pt;
+#titleActivity {
+  margin-top: -25px !important;
+  margin-bottom: -25px !important;
+  font-size: 30pt !important;
 }
 .Activity .id {
 }

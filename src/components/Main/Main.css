@@ -10,3 +10,9 @@
   color: #222;
   padding: 10px;
 }
+.contentContainer {
+  width: 90%;
+  position: relative;
+  right: 0;
+  left: 150px;
+}
