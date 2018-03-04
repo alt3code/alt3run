@@ -4,15 +4,21 @@
   max-width: 100%;
   word-wrap: break-word;
   min-height: 600px;
-  margin: 25px auto;
+  margin: 0;
+  overflow: hidden;
 }
 .main a {
   color: #222;
   padding: 10px;
 }
+.sidebarContainer {
+  float: left;
+  width: 20%;
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
+}
 .contentContainer {
-  width: 90%;
-  position: relative;
-  right: 0;
-  left: 150px;
+  width: 80%;
+  float: right;
 }

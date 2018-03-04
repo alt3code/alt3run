@@ -1,8 +1,14 @@
+html {
+    height  : 100%;
+    overflow: hidden;
+}
 body {
   background: white;
   margin: 0 auto;
   padding: 0;
   line-height: 2;
+  height  : 100%;
+  overflow: auto;
 }
 h, p {
   margin: 0;

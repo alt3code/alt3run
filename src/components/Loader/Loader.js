@@ -4,6 +4,7 @@ import RefreshIndicator from 'material-ui/RefreshIndicator';
 const style = {
   container: {
     position: 'relative',
+    marginTop: '50px'
   },
   refresh: {
     display: 'inline-block',

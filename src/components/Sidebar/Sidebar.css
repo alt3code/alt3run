@@ -1,0 +1,9 @@
+.sidebar {
+  position: fixed;
+  float: left;
+  z-index: 1000;
+}
+li {
+  list-style-type: none;
+  padding: 0;
+}
