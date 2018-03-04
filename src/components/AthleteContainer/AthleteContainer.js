@@ -2,6 +2,7 @@ import { DEFAULT_URL, TOKEN_STR, ACCESS_TOKEN, USER_ID } from '../../config/conf
 
 import React, { Component } from 'react';
 import Athlete from '../Athlete/Athlete';
+import Loader from '../Loader/Loader';
 const api = require('../../utils/Api');
 
 export default class AthleteContainer extends Component {
@@ -33,7 +34,7 @@ export default class AthleteContainer extends Component {
   }
 
   render() {
-    return this.state.loading ? <p>Loading...</p> :
+    return this.state.loading ? <Loader /> :
     <Athlete
       profile={this.state.profile}
       firstname={this.state.firstname}

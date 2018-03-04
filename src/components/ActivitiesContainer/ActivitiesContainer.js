@@ -8,15 +8,6 @@ import Activity from '../Activity/Activity';
 const api = require('../../utils/Api');
 const axios = require('axios');
 
-const LoadingDiv = () => {
-  return (
-    <div>
-      <p>Loading</p>
-      <span><img src={runLogo} style={{width: 40, position: 'relative', top: 5, left: 10}} alt='Run'/></span>
-    </div>
-  )
-}
-
 export default class ActivitiesContainer extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +64,6 @@ export default class ActivitiesContainer extends Component {
       );
     });
 
-    return this.state.loading ? <LoadingDiv /> : <div className="activitiesWrapper">{activities}</div>
+    return this.state.loading ? <Loader /> : <div className="activitiesWrapper">{activities}</div>
   }
 }
